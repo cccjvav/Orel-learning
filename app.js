@@ -4,6 +4,7 @@ const toast = document.getElementById('toast');
 const modalBackdrop = document.getElementById('modalBackdrop');
 const modalContent = document.getElementById('modalContent');
 let currentView = 'home';
+let teacherStep = 0;
 let toastTimer;
 
 const icons = {
@@ -30,8 +31,8 @@ function statCard(icon, value, label) {
 function renderHome() {
   return `
     <div class="page-head">
-      <div><p class="eyebrow">Thursday, September 17</p><h1>Good morning, Alex <span class="wave">✦</span></h1><p class="subhead">Let's make one idea feel a little less mysterious today.</p></div>
-      <div class="page-actions"><button class="btn" data-action="new-note">${icons.plus} Add a note</button><button class="btn primary" data-view="lesson">Continue learning ${icons.arrow}</button></div>
+      <div><p class="eyebrow">Thursday, September 17</p><h1>Good morning, Alex <span class="wave">✦</span></h1><p class="subhead">Your lecturer is ready to take one idea at a time, in plain language.</p></div>
+      <div class="page-actions"><button class="btn" data-action="new-note">${icons.plus} Add a note</button><button class="btn primary" data-view="teacher">Start with your lecturer ${icons.arrow}</button></div>
     </div>
     <div class="dashboard-grid">
       <div class="main-column">
@@ -48,7 +49,7 @@ function renderHome() {
         </div></section>
       </div>
       <div class="side-column">
-        <section class="panel ask-card"><h2>Ask your study guide</h2><p>No question is too basic. Try asking in your own words.</p><form class="ask-form" id="askForm"><input id="askInput" autocomplete="off" placeholder="e.g. What is a variable?" aria-label="Ask a study question" /><button aria-label="Ask question">${icons.arrow}</button></form><div class="suggested"><button data-question="What is a variable?">What is a variable?</button><button data-question="What is code?">What is code?</button><button data-question="Give me an example">Give me an example</button></div></section>
+        <section class="panel ask-card"><h2>Ask your lecturer</h2><p>I can start from zero, use an analogy, give an example, or explain it again.</p><form class="ask-form" id="askForm"><input id="askInput" autocomplete="off" placeholder="e.g. What is a variable?" aria-label="Ask your lecturer a question" /><button aria-label="Ask your lecturer">${icons.arrow}</button></form><div class="suggested"><button data-question="What is a variable?">What is a variable?</button><button data-question="Explain it more simply">Explain it simply</button><button data-question="Give me an example">Give me an example</button></div></section>
         <section class="panel focus-panel"><div class="section-heading"><h2>Small focus for today</h2><button class="text-button" data-action="focus-done">Done</button></div><div class="focus-item"><i class="focus-bullet"></i><div><strong>Understand one idea</strong><p>Finish “What is a variable?”</p></div></div><div class="focus-item"><i class="focus-bullet"></i><div><strong>Say it in your words</strong><p>Use the practice prompt below.</p></div></div></section>
         <section class="panel focus-panel"><div class="section-heading"><h2>Recent notes</h2><button class="text-button" data-view="notes">See all ${icons.arrow}</button></div><div class="focus-item"><i class="focus-bullet"></i><div><strong>A variable is a named box</strong><p>Saved 2 hours ago</p></div></div><div class="focus-item"><i class="focus-bullet"></i><div><strong>Questions to revisit</strong><p>Saved yesterday</p></div></div></section>
       </div>
@@ -101,6 +102,36 @@ function renderGlossary() {
     <div class="glossary-list" id="glossaryList">${terms.map((term, index) => `<article class="term-card" data-term="${term[0].toLowerCase()}" data-term-index="${index}"><h3>${term[0]}</h3><p>${term[1]}</p><span class="term-type">${term[2]}</span></article>`).join('')}</div>`;
 }
 
+const teacherSteps = [
+  {
+    label: 'Step 1 · Build the idea',
+    title: 'Let’s begin with the everyday idea.',
+    body: 'A variable is a name we give to a piece of information so we can find it again. Before we write code, imagine a labeled box: the label tells us what is inside.',
+    prompt: 'No technical language yet. Just remember: a variable is a helpful label.'
+  },
+  {
+    label: 'Step 2 · See an example',
+    title: 'Now let’s put that idea into code.',
+    body: 'In this example, name is the label and “Alex” is the value inside the box. The equals sign connects the name to the information we want to remember.',
+    example: 'name = "Alex"\nprint(name)\n\n# name helps us find Alex again',
+    prompt: 'Look closely: which word would you use to ask for the stored information?'
+  },
+  {
+    label: 'Step 3 · Say it back',
+    title: 'Teach the idea back to me.',
+    body: 'Explaining an idea in your own words helps us see what is clear and what needs another explanation. There is no penalty for being unsure.',
+    prompt: 'Finish this sentence: “A variable is like a…”'
+  }
+];
+
+function renderTeacher() {
+  const step = teacherSteps[teacherStep];
+  const isLast = teacherStep === teacherSteps.length - 1;
+  return `
+    <div class="page-head"><div><p class="eyebrow">Teacher mode · Foundations of code</p><h1>Your personal lecturer.</h1><p class="subhead">I’ll introduce the idea, connect it to something familiar, show an example, then check that it makes sense.</p></div><div class="page-actions"><button class="btn" data-view="lesson">Open lesson notes ${icons.arrow}</button></div></div>
+    <div class="teacher-layout"><section class="panel lecture-panel"><div class="lecture-header"><div class="lecturer-avatar">✦</div><div><strong>Professor Lumen</strong><span>Teaching gently · no question too basic</span></div><span class="live-dot"><i></i> with you</span></div><div class="lecture-progress"><span class="lecture-progress-fill" style="width:${((teacherStep + 1) / teacherSteps.length) * 100}%"></span></div><div class="lecture-step"><span class="step-label">${step.label}</span><h2>${step.title}</h2><p>${step.body}</p>${step.example ? `<div class="code-example"><div class="code-top"><i></i><i></i><i></i><span>our first example</span></div><pre>${step.example}</pre></div>` : `<div class="teacher-analogy"><div class="analogy-icon">${icons.note}</div><div><strong>The box and label</strong><p>The label is the <em>variable name</em>. The information inside is the <em>value</em>. We can change the information without changing the label.</p></div></div>`}<div class="teacher-prompt"><span>${icons.bulb}</span><p>${step.prompt}</p></div>${isLast ? `<textarea class="teacher-response" id="teacherResponse" placeholder="A variable is like a…" aria-label="Explain what a variable is in your own words"></textarea>` : ''}<div class="lecture-controls">${teacherStep > 0 ? '<button class="btn" data-action="teacher-back">Back</button>' : '<span class="lecture-note">We’ll take this one small step at a time.</span>'}<button class="btn primary" data-action="teacher-next">${isLast ? 'Finish this explanation' : 'Continue with me'} ${icons.arrow}</button></div></div></section><aside class="teacher-aside"><section class="panel teaching-method"><h2>How I teach</h2><div class="method-row"><span>1</span><div><strong>Start with the simple version</strong><p>We meet the idea before the vocabulary.</p></div></div><div class="method-row"><span>2</span><div><strong>Connect it to real life</strong><p>Analogies give new words somewhere to land.</p></div></div><div class="method-row"><span>3</span><div><strong>Look at one example</strong><p>We explain every part, not just the answer.</p></div></div><div class="method-row"><span>4</span><div><strong>Check your understanding</strong><p>You try, I give a nudge, and we revisit anything unclear.</p></div></div></section><section class="panel teacher-contract"><span class="tip-label">You are in control</span><p>Ask me to slow down, use another analogy, give more examples, or go back to the beginning.</p><div class="suggested"><button data-question="Explain it more simply">Simpler, please</button><button data-question="Give me an example">Another example</button></div></section><section class="panel teacher-outcome"><h2>By the end of this topic</h2><p>You will be able to explain what a variable is, identify its name and value, and use one in a tiny program.</p></section></aside></div>`;
+}
+
 function renderLesson() {
   return `
     <div class="lesson-page"><div class="lesson-top"><button class="back-link" data-view="home">${icons.arrow.replace('M5 12h14m-6-6 6 6-6 6', 'M19 12H5m6 6-6-6 6-6')} Back to overview</button><div class="lesson-progress"><span>Lesson 2 of 5</span><div class="progress-bar"><span></span></div><strong>38%</strong></div></div>
@@ -108,16 +139,16 @@ function renderLesson() {
       <div class="lesson-layout"><article class="panel lesson-content"><div class="concept-callout"><div class="callout-icon">${icons.info}</div><div><strong>The short version</strong><p>A variable is a named box. The box holds a value, like a number or a word.</p></div></div><h2>Imagine a labeled box</h2><p>Suppose you are packing for a trip. You put your passport in a small box and write <strong>passport</strong> on the label. You do not need to remember exactly where the box is every time — you can look for the label.</p><div class="analogy-box"><strong>Everyday analogy</strong><p>The label is the <em>variable name</em>. The thing inside is the <em>value</em>. If you replace what is inside, the label can stay the same.</p></div><h2>How that looks in code</h2><p>Here, we give the value <strong>Alex</strong> the name <strong>name</strong>. Later, we can use <strong>name</strong> instead of typing <strong>Alex</strong> again.</p><div class="code-example"><div class="code-top"><i></i><i></i><i></i><span>hello.py</span></div><pre><span class="purple">name</span> <span class="orange">=</span> <span class="green">"Alex"</span>
 <span class="blue">print</span>(<span class="purple">name</span>)
 
-<span class="muted-code"># The computer remembers: name → Alex</span></pre></div><div class="guided-box"><span class="step-label">Try it with me · Step 1 of 1</span><h3>Which part is the variable name?</h3><p>Take a guess. We are looking for the label — not the thing stored inside it.</p><div class="choice-row"><button class="choice" data-choice="Alex">“Alex”</button><button class="choice" data-choice="name">name</button><button class="choice" data-choice="print">print</button></div><div class="feedback" id="choiceFeedback">${icons.check}<span id="feedbackText"></span></div></div><div class="lesson-next"><button class="btn primary" data-action="finish-lesson">That makes sense — next ${icons.arrow}</button></div></article><aside class="lesson-aside"><section class="panel lesson-side-card"><h2>In this lesson</h2><ul class="contents-list"><li class="active">The named box idea</li><li>Variable names and values</li><li>One tiny example</li><li>Practice together</li></ul></section><button class="panel btn save-note" data-action="save-lesson-note">${icons.note} Save this idea</button><section class="panel hint-card"><strong>Need a nudge?</strong><p>Ask yourself: which word would you say when you want the computer to find “Alex” again?</p><button class="text-button" data-action="show-hint">Show me a hint ${icons.arrow}</button></section></aside></div>
+<span class="muted-code"># The computer remembers: name → Alex</span></pre></div><div class="guided-box"><span class="step-label">Try it with me · Step 1 of 1</span><h3>Which part is the variable name?</h3><p>Take a guess. We are looking for the label — not the thing stored inside it.</p><div class="choice-row"><button class="choice" data-choice="Alex">“Alex”</button><button class="choice" data-choice="name">name</button><button class="choice" data-choice="print">print</button></div><div class="feedback" id="choiceFeedback">${icons.check}<span id="feedbackText"></span></div></div><div class="lesson-next"><button class="btn primary" data-action="finish-lesson">That makes sense — next ${icons.arrow}</button></div></article><aside class="lesson-aside"><section class="panel lesson-side-card"><h2>In this lesson</h2><ul class="contents-list"><li class="active">The named box idea</li><li>Variable names and values</li><li>One tiny example</li><li>Practice together</li></ul></section><button class="panel btn save-note" data-action="save-lesson-note">${icons.note} Save this idea</button><button class="panel btn ask-lecturer-btn" data-view="teacher">${icons.bulb} Ask the lecturer to explain</button><section class="panel hint-card"><strong>Need a nudge?</strong><p>Ask yourself: which word would you say when you want the computer to find “Alex” again?</p><button class="text-button" data-action="show-hint">Show me a hint ${icons.arrow}</button></section></aside></div>
     </div>`;
 }
 
 function render(view = currentView) {
   currentView = view;
-  const names = { home: 'Overview', course: 'My course', practice: 'Practice', notes: 'My notes', glossary: 'Glossary', lesson: 'Lesson 2' };
+  const names = { home: 'Overview', course: 'My course', practice: 'Practice', teacher: 'Teacher mode', notes: 'My notes', glossary: 'Glossary', lesson: 'Lesson 2' };
   document.querySelectorAll('.nav-item[data-view]').forEach(item => item.classList.toggle('active', item.dataset.view === (view === 'lesson' ? 'home' : view)));
   breadcrumb.innerHTML = `<span>${view === 'lesson' ? 'My course' : 'Workspace'}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><strong>${names[view]}</strong>`;
-  viewRoot.innerHTML = view === 'home' ? renderHome() : view === 'course' ? renderCourse() : view === 'practice' ? renderPractice() : view === 'notes' ? renderNotes() : view === 'glossary' ? renderGlossary() : renderLesson();
+  viewRoot.innerHTML = view === 'home' ? renderHome() : view === 'course' ? renderCourse() : view === 'practice' ? renderPractice() : view === 'teacher' ? renderTeacher() : view === 'notes' ? renderNotes() : view === 'glossary' ? renderGlossary() : renderLesson();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -151,7 +182,7 @@ function answerFor(question) {
 
 function openQuestion(question) {
   const answer = answerFor(question);
-  showModal(`<p class="modal-eyebrow">Your study guide · no question too basic</p><h2>${answer.title}</h2><p>${answer.body}</p><div class="code-example"><div class="code-top"><i></i><i></i><i></i><span>tiny example</span></div><pre>${answer.example}</pre></div><div class="modal-actions"><button class="btn" data-modal-action="close">Got it</button><button class="btn primary" data-modal-action="practice">Try it with me ${icons.arrow}</button></div>`);
+  showModal(`<p class="modal-eyebrow">Your lecturer · no question too basic</p><h2>${answer.title}</h2><p>${answer.body}</p><div class="code-example"><div class="code-top"><i></i><i></i><i></i><span>tiny example</span></div><pre>${answer.example}</pre></div><div class="modal-actions"><button class="btn" data-modal-action="close">Got it</button><button class="btn primary" data-modal-action="practice">Try it with me ${icons.arrow}</button></div>`);
 }
 
 function newNote() {
@@ -171,6 +202,14 @@ document.addEventListener('click', event => {
   if (action === 'share-course') return showToast('Study buddy link copied — sharing is coming soon.');
   if (action === 'start-explain') return showModal(`<p class="modal-eyebrow">Practice · explain it simply</p><h2>Finish the sentence</h2><p>Try this in your own words: “A variable is like a…”</p><textarea placeholder="It is like a…"></textarea><div class="modal-actions"><button class="btn" data-modal-action="close">I’ll think first</button><button class="btn primary" data-modal-action="show-coach">Show a coach example ${icons.arrow}</button></div>`);
   if (action === 'start-context') return showModal(`<p class="modal-eyebrow">Practice · use it in context</p><h2>Choose a helpful label</h2><p>You are tracking the number of books you have read. Which variable name makes the most sense?</p><div class="choice-row"><button class="choice context-choice" data-modal-action="context-answer" data-correct="false">blue</button><button class="choice context-choice" data-modal-action="context-answer" data-correct="true">booksRead</button><button class="choice context-choice" data-modal-action="context-answer" data-correct="false">thing</button></div><p id="contextFeedback" class="subhead"></p>`);
+  if (action === 'teacher-back') { teacherStep = Math.max(0, teacherStep - 1); return render('teacher'); }
+  if (action === 'teacher-next') {
+    if (teacherStep < teacherSteps.length - 1) { teacherStep += 1; return render('teacher'); }
+    const response = document.getElementById('teacherResponse')?.value.trim();
+    showToast(response ? 'Excellent — your explanation has been noted. Next, we’ll practise it.' : 'Good work taking the explanation one step at a time.');
+    teacherStep = 0;
+    return render('practice');
+  }
   if (action === 'feedback') return showToast('Thanks — your feedback helps shape a kinder learning space.');
 
   const open = event.target.closest('[data-open]');

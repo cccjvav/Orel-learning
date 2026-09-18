@@ -1,6 +1,6 @@
 # Lumen — Orel learning
 
-A calm, beginner-first self-study workspace for learning the foundations of code without turning practice into a test.
+A calm, teacher-led self-study workspace for learning the foundations of code without turning practice into a test. Lumen is designed to behave like a patient lecturer: it starts with the simple idea, connects it to something familiar, explains an example, checks understanding, and revisits anything unclear.
 
 ## What is included
 
@@ -8,7 +8,8 @@ A calm, beginner-first self-study workspace for learning the foundations of code
 - A four-part course map for **Foundations of code**.
 - A guided lesson on variables using plain-language analogies and a tiny code example.
 - Training-style practice with hints, retries, and no grades.
-- A lightweight study guide that answers common questions in context.
+- A dedicated **Teacher mode** with a three-step lecturer walkthrough: build the idea, see an example, and say it back.
+- A lightweight lecturer prompt that answers common questions in context and offers simpler explanations.
 - Notes and glossary views with search and quick examples.
 - Responsive layout for desktop, tablet, and mobile.
 
