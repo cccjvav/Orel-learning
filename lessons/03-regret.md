@@ -125,3 +125,17 @@ Crucial distinctions:
 The earlier √T and 0.1T examples specify only the regret gap, not a complete loss table. They do not determine the best fixed action's average loss numerically. One needs the losses or additional information to calculate that average.
 
 Compact definition for later reference: best-fixed average loss = min over actions a of [(loss of a on round 1 + ... + loss of a on round T) / T]. Average regret = our average loss − best-fixed average loss.
+
+## Learner question: unobserved regret and a changing benchmark
+
+The learner correctly challenged two points: without the complete benchmark, how can we calculate regret, and won't more rounds change the benchmark's average? These are substantive conceptual questions, not arithmetic errors.
+
+Answer: from bandit observations alone, we generally cannot calculate exact realized regret. It is an evaluation quantity defined using all actions' realized losses, even unobserved ones. Two complete loss tables can agree on everything the learner observed yet give different regret. Example: choose A on both rounds and observe losses [0.4, 0.4], total 0.8. If B's unobserved losses are [0.1, 0.1], best-fixed total is 0.2 and regret is 0.6. If B's losses are [0.9, 0.9], best-fixed total is A's 0.8 and regret is 0. These worlds are indistinguishable from the learner's feedback.
+
+An algorithm does not need exact regret as an input. It selects actions from observed feedback. Researchers may (a) evaluate against a complete table in an appropriate simulation, (b) prove an expected-regret or high-probability bound under specified assumptions without observing the actual regret, or (c) estimate performance with suitable statistical methods and assumptions. An estimate or bound is not an exact observed regret. Knowing true means alone permits expected-mean comparisons, not reconstruction of all realized unchosen losses.
+
+Yes, the benchmark is recomputed at every horizon. Extend the original table with round 4: A loss 0.9, B loss 0.1. At T=3, both fixed totals are 0.9 and best-fixed average is 0.3. At T=4, A totals 1.8 (average 0.45), B totals 1.0 (average 0.25). B is now the best fixed action and the benchmark average is 0.25. “Always B” in this comparison includes B on rounds 1–4; it does not mean selecting a different benchmark action each round.
+
+If our choices extend from A,A,B to A,A,B,B, our loss total changes from 1.0 to 1.1. At T=4 our average is 1.1/4 = 0.275. Regret is 1.1 − 1.0 = 0.1, and average regret is 0.1/4 = 0.025 = 0.275 − 0.25. Both averages changed; they are compared over the same horizon.
+
+The prior √T illustration was a hypothetical regret curve, not something inferred from partial feedback. Real sublinear-regret results derive bounds under assumptions and already allow the best-in-hindsight action and its average to change with the horizon. They do not assume the realized benchmark average is constant. Stable stochastic means are distinct from finite-sample realized averages, which fluctuate.
