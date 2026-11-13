@@ -65,3 +65,21 @@ For this loss-based definition:
 Do not clip negative values to zero or reverse the subtraction. A negative realized regret is distinct from the stochastic pseudo-regret discussed later, whose standard definition is nonnegative.
 
 Next conceptual checkpoint: could we get negative regret in this same table if we committed to A for all three rounds? No: always-A totals 0.9 and the best fixed action totals 0.9, giving zero. More generally a fixed action cannot beat the best fixed action on the same realized table. No learner answer yet.
+
+## Checkpoint answered: matching the fixed benchmark
+
+The learner correctly answered zero for always-A: 0.9 − 0.9 = 0. This demonstrates identifying equality with the benchmark in the worked table.
+
+## Next concept: total versus average regret
+
+Source connection: `Online Learning Setup and Stochastic Bandits.pdf`, PDF p. 5, introduces the goal of sublinear regret.
+
+Total regret may increase while average regret per round decreases. Average regret per round = total regret / number of rounds. It compares average loss with the best fixed action's average loss over the same horizon, not with the winner of each individual round.
+
+Illustrative performance figures (not measured results from the café table): after 100 rounds, total regret 10 gives average regret 0.10; after 1,000 rounds, total regret 20 gives average regret 0.02. The total increased, but the average shortfall decreased. Two such checkpoints alone do not establish an asymptotic guarantee.
+
+A **sublinear regret** guarantee means regret grows slower than the number of rounds, so its ratio to the number of rounds tends to zero as the horizon grows. In an introductory nonnegative growth example, total regret equal to the square root of the round count has this property. A constant positive gap of 0.1 per round instead gives linear total regret 0.1 times the round count, with average regret remaining 0.1. Precise later guarantees may concern expected regret or upper bounds; do not assume realized regret is nonnegative or monotone.
+
+Sublinear regret is about the average gap to a benchmark vanishing. It does not mean zero total loss, perfect choices on every round, or a guarantee that every later single choice is better.
+
+Guided checkpoint: if total regret is 30 after 1,000 rounds, average regret is 30 / 1,000 = 0.03. Ask the learner to compute this; answer not yet received.

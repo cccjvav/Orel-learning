@@ -106,3 +106,7 @@ Pending checkpoint: change our choices to A,B,B, total loss 0.7. Ask for 0.7 −
 ### Latest answer: negative regret calculated correctly
 
 The learner correctly answered **−0.2** for the regret checkpoint. The follow-up explains that our switching sequence A,B,B incurs 0.2 less loss than the best fixed café. This does not mean our sequence is the best possible: A,B,A totals 0.6 instead of 0.7. Explain the signs of regret and preserve the fixed comparator. Next pending question: would always choosing A produce negative regret in this same table? Expected answer: no, total 0.9 minus best-fixed total 0.9 is zero. Calculation of −0.2 is demonstrated; interpretation is introduced but not yet checked.
+
+### Latest continuation: average regret
+
+The learner correctly answered **zero** for always-A's 0.9 total minus the 0.9 benchmark. Next introduced total versus average regret, tied to the sublinear-regret goal on PDF p. 5 of the bandit setup slides. Illustrative totals: 10 over 100 rounds -> 0.10 per round; 20 over 1,000 -> 0.02. Increasing total regret can coexist with decreasing average gap. These are illustrations, not measured results or proof of an asymptotic guarantee. Pending supported calculation: total regret 30 over 1,000 rounds; what is 30 / 1,000? Correct result 0.03, not yet answered. Introduce formal sublinear notation only gradually, and avoid claiming realized regret must be nonnegative or monotone.

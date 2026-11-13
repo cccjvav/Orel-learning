@@ -10,7 +10,7 @@ These are permanent lesson notes, not just chat summaries. Read in order, or use
 
 | [02](02-expected-reward.md) | Expected reward: probability-weighted averages | *Online Learning Setup and Stochastic Bandits*, PDF pp. 3–4, 8 (prerequisite explanation) | Expectation-versus-outcome distinction demonstrated; bandit terminology clarified |
 
-| [03](03-regret.md) | Regret and the best fixed action in hindsight | *Online Learning Setup and Stochastic Bandits*, PDF p. 5 | Regret subtraction demonstrated; interpretation checkpoint pending |
+| [03](03-regret.md) | Regret and the best fixed action in hindsight | *Online Learning Setup and Stochastic Bandits*, PDF p. 5 | Regret and zero-regret calculations demonstrated; average regret introduced |
 
 ## Where we are
 
@@ -18,7 +18,7 @@ These are permanent lesson notes, not just chat summaries. Read in order, or use
 - First lesson: an intuitive foundation before algorithms and proofs.
 - Current topic: Lesson 03, realized regret against the best fixed action.
 - Demonstrated: a supported expectation calculation, exploration motivation, reward-to-loss conversion.
-- Next: check why switching can beat the best fixed action, but a fixed action cannot.
+- Current continuation: average regret per round and the motivation for sublinear regret; supported calculation pending.
 - [Teaching handover](../HANDOVER.md): preferences, demonstrated understanding, and continuation instructions.
 - Later topics: see the roadmap. Not yet written or marked as learned.
 
