@@ -139,3 +139,30 @@ Yes, the benchmark is recomputed at every horizon. Extend the original table wit
 If our choices extend from A,A,B to A,A,B,B, our loss total changes from 1.0 to 1.1. At T=4 our average is 1.1/4 = 0.275. Regret is 1.1 − 1.0 = 0.1, and average regret is 0.1/4 = 0.025 = 0.275 − 0.25. Both averages changed; they are compared over the same horizon.
 
 The prior √T illustration was a hypothetical regret curve, not something inferred from partial feedback. Real sublinear-regret results derive bounds under assumptions and already allow the best-in-hindsight action and its average to change with the horizon. They do not assume the realized benchmark average is constant. Stable stochastic means are distinct from finite-sample realized averages, which fluctuate.
+
+## Reading the course's regret formula
+
+Source connection: `Online Learning Setup and Stochastic Bandits.pdf`, PDF pp. 3–5. After the observability clarification, the learner asked to continue. We now translate the familiar table into the slide notation, rather than introducing another algorithm.
+
+- T: total number of rounds being evaluated.
+- t: a particular round, such as 1 or 2.
+- a: an available action, such as café A or café B.
+- A_t: the action the learner actually selects on round t. This capital A is a mathematical name for a choice; it does not necessarily mean café A.
+- ℓ_{t,a}: the loss of action a on round t. The symbol ℓ is a lowercase script-like L, used for loss. The indices identify a table entry; they are not multiplication.
+- ℓ_{t,A_t}: the loss of the action actually selected on round t.
+
+For the first three rows of our table, ℓ_{2,A} = 0.6 and ℓ_{2,B} = 0.3. If the learner chooses B on round 2, A_2 = B and ℓ_{2,A_2} = 0.3.
+
+The formula is:
+
+R_T = Σ_{t=1}^T ℓ_{t,A_t} − min_a Σ_{t=1}^T ℓ_{t,a}.
+
+Read it as: add our chosen losses, then subtract the smallest total obtained by holding one action fixed across all rounds. Σ means “add these terms”; min means “take the smallest.”
+
+For choices A,A,B in the first three rounds: the first sum is 0.2 + 0.6 + 0.2 = 1.0. The fixed-A sum is 0.2 + 0.6 + 0.1 = 0.9. The fixed-B sum is 0.4 + 0.3 + 0.2 = 0.9. Thus R_3 = 1.0 − min(0.9, 0.9) = 0.1.
+
+Order matters. min_a Σ_t ℓ_{t,a} first totals each fixed action and then selects the smallest total. Σ_t min_a ℓ_{t,a} instead selects the smallest loss on each round and then adds; that is the switching benchmark. Here the latter is 0.2 + 0.3 + 0.1 = 0.6, not 0.9.
+
+The formula is a definition, not a claim that the bandit learner observes every term. Unchosen loss entries remain unavailable in standard bandit feedback.
+
+Guided notation checkpoint: on round 3 we choose café B. What are A_3 and ℓ_{3,A_3}? Reference answer: B and 0.2. No learner response yet. Keep this low-pressure; the goal is translating symbols, not memorizing a formula.
