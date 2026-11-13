@@ -10,12 +10,15 @@ These are permanent lesson notes, not just chat summaries. Read in order, or use
 
 | [02](02-expected-reward.md) | Expected reward: probability-weighted averages | *Online Learning Setup and Stochastic Bandits*, PDF pp. 3–4, 8 (prerequisite explanation) | Expectation-versus-outcome distinction demonstrated; bandit terminology clarified |
 
+| [03](03-regret.md) | Regret and the best fixed action in hindsight | *Online Learning Setup and Stochastic Bandits*, PDF p. 5 | Introduced; calculation checkpoint pending |
+
 ## Where we are
 
 - Course materials located on main and copied into this branch.
 - First lesson: an intuitive foundation before algorithms and proofs.
-- Current topic: Lesson 02, expected reward versus observed reward and sample average.
-- Next: check the expectation distinction, then introduce notation and regret gradually.
+- Current topic: Lesson 03, realized regret against the best fixed action.
+- Demonstrated: a supported expectation calculation, exploration motivation, reward-to-loss conversion.
+- Next: check the regret calculation and explain what a negative result means.
 - [Teaching handover](../HANDOVER.md): preferences, demonstrated understanding, and continuation instructions.
 - Later topics: see the roadmap. Not yet written or marked as learned.
 

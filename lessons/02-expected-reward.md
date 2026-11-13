@@ -143,3 +143,7 @@ For our original ratings between 0 and 10, first divide the rating by 10 to put 
 This conversion reverses the numerical direction without changing which outcome is preferable. Maximizing normalized reward is equivalent to minimizing this loss over the same number of rounds. The formula `loss = 1 − reward` here assumes the reward has already been put on the 0–1 scale; it must not be applied directly to a rating of 7 out of 10 if we want losses in [0,1].
 
 Next supported checkpoint: a rating of 8 becomes normalized reward 0.8. Ask for the corresponding loss and whether it is preferable to the loss from rating 7. No learner answer yet. Reference solution: 1 − 0.8 = 0.2, preferable to 0.3 because smaller loss is better.
+
+### Loss checkpoint answered
+
+The learner correctly calculated loss 0.2 from reward 0.8 and explained that it is preferable to 0.3 because it is smaller. We now proceed to [Lesson 03: regret](03-regret.md).

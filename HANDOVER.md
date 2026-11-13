@@ -96,3 +96,9 @@ The learner correctly answered **6** for the supported calculation `0.5 × 8 + 0
 ### Latest checkpoint: exploration motivation confirmed; loss notation next
 
 The learner correctly answered that we explore B because we do not yet know enough about it. The next explanation bridges rewards to the course's losses: divide 0–10 coffee ratings by 10, then set loss = 1 − normalized reward. Examples: rating 7 gives reward 0.7 and loss 0.3; rating 2 gives loss 0.8. Pending question: rating 8 gives reward 0.8—what is the loss, and is it preferable to the loss from rating 7? Answer not yet received. Next, once this direction is comfortable, introduce a small loss-based regret example with a best-fixed-action benchmark. Do not restart previous completed checkpoints.
+
+### Latest continuation: Lesson 03, regret
+
+The learner correctly answered the reward-to-loss checkpoint: 1 − 0.8 = 0.2, better than 0.3 because lower is preferable. Introduced Lesson 03 (`lessons/03-regret.md`) with a three-round realized-loss table. A losses = [0.2, 0.6, 0.1]; B losses = [0.4, 0.3, 0.2]. Both fixed choices total 0.9. Our choices A,A,B total 1.0, giving regret 0.1. Explain “fixed” and “in hindsight,” and that the full table is for evaluation, not bandit feedback available to the learner.
+
+Pending checkpoint: change our choices to A,B,B, total loss 0.7. Ask for 0.7 − 0.9. Correct result is −0.2; use it to explain that realized regret against a fixed comparator can be negative because a switching learner can beat both fixed choices. No answer received yet. Do not confuse this with nonnegative stochastic pseudo-regret.
