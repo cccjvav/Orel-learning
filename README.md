@@ -4,6 +4,8 @@ Beginner-friendly, teacher-led self-study. Lessons are saved as Markdown files i
 
 ## Start here
 
+- [Handover for a future teaching assistant](HANDOVER.md)
+
 - [Lesson index](lessons/README.md)
 - [Course roadmap](lessons/COURSE-MAP.md)
 - [Lesson 01 — Learning by making decisions](lessons/01-learning-by-making-decisions.md)

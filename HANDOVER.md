@@ -1,0 +1,85 @@
+# Teaching handover — OReL self-study
+
+Last updated: 2026-09-18. Read this before continuing instruction.
+
+## Mission and learner preferences
+
+The user wants a patient lecturer/teacher throughout the actual course materials, not a summary generator, a new app, or assignment-heavy tutoring. Assume little prior familiarity with terminology. Use simple language without sacrificing accuracy. Explain the reason for each step, demonstrate worked examples, then offer short supported practice. Introduce mathematics gradually. The user learns by seeing how to do things.
+
+Keep chat lessons manageable: one conceptual advance at a time, usually one low-pressure checkpoint. Give specific feedback on their reasoning; refine imprecise claims kindly. Do not interpret agreement such as “yes” as demonstrated mastery.
+
+The user explicitly requires permanent lesson documentation and regular Git pushes. Save useful chat explanations and learning observations, not only summaries. Push at meaningful checkpoints. The user requested this handover so a future assistant can continue without restarting.
+
+## Repository and sources
+
+- Repository: `cccjvav/Orel-learning`.
+- This session's fixed working branch: `arena/01a0b3fa-orel-learning`. Do not switch branches or push another branch.
+- Materials were found on `origin/main` after fetching. They are now copied into `OReL Material/OReL Material/`. Do not ask the user to upload them again.
+- The duplicate ZIP was intentionally not copied. The PDFs match their source blobs.
+- `coues_material.html` is the supplied schedule. The introduction PDF has a tentative schedule differing in places. Use the roadmap as a self-study sequence, not a claim about exact lecture chronology.
+- Source references use 1-based PDF page numbers; printed slide numbers differ because of overlays.
+- Earlier branch `arena/01a0b1ce-orel-learning`, reviewed at `6b76729b54c6d409232b680b7af8e9c6b43a0d36`, contains a static demo learning app about programming variables. Useful teaching principles were reused, but its subject, fictional progress, and learner details must NOT be mistaken for this user's course or progress. No need to build/import the app.
+
+## Files to read
+
+1. `lessons/README.md`: lesson index and current position.
+2. `lessons/TEACHING-GUIDE.md`: teaching/documentation conventions.
+3. `lessons/COURSE-MAP.md`: planned topic coverage and source inventory.
+4. `lessons/01-learning-by-making-decisions.md`: first lesson plus actual follow-up discussion.
+5. `lessons/02-expected-reward.md`: next short lesson and continuation point.
+
+Keep this file and the index current as teaching advances. Distinguish written material, material introduced in chat, and understanding actually demonstrated.
+
+## What the learner has demonstrated
+
+Through their own answers, the learner has recognized:
+
+- Always returning to the first good café may prevent discovering a better option.
+- Repeated visits help investigate variation and estimate average quality.
+- Adding a rating of 10 to an existing average of 7 raises the average, because 10 exceeds 7.
+- Mostly choosing the currently promising café while sometimes trying another balances benefiting now with discovery.
+
+Their wording about finding the “true average” was refined: finite observations estimate it, rather than generally identify it exactly. Their description of quality becoming “more constant” was refined: more data improves knowledge of the mean, not necessarily the consistency of individual coffees. These refinements were explained, but not independently checked.
+
+## Examples already used
+
+- B's ratings: 4, 8, 7, 9, 7. Sum 35, sample average 7.
+- Add a rating of 10: sum 45 over six visits, average 7.5.
+- Do NOT average 7 and 10 equally: the old average represents five visits.
+- Incremental update: old average + (new rating − old average) / new count.
+- A averaging 7 over 100 visits versus B averaging 6 over two visits: better estimate versus uncertainty. Assumptions about comparable variation and stable independent sampling matter.
+- Epsilon-greedy introduced as a supplementary intuitive example: 90% select current best estimated café; 10% choose uniformly between both cafés. While A's estimate is higher, B is selected 5% of the time, not 10%. Exploration can select A; probabilities are not exact schedules. Exploitation switches to B if its estimate becomes higher. No mastery of this calculation was tested.
+
+## Current teaching point and immediate next step
+
+The user said “Yes, you can continue now” and requested this handover. Lesson 02 introduces expected reward using a known toy model:
+
+- B gives reward 10 with probability 0.25 and reward 6 with probability 0.75.
+- Expected reward = 10 × 0.25 + 6 × 0.75 = 7.
+- This is a probability-weighted average, not a promised next outcome.
+- B never produces a 7 in that model; an expected value need not be an attainable individual outcome.
+- Real bandit learners do not know the underlying probabilities; they estimate means from observations.
+
+The next checkpoint asks whether the expected reward can be 7 even though an individual coffee never receives 7. No answer is recorded yet. Continue from the user's next answer; do not assume they have mastered expectation. Then introduce mathematical symbols slowly and connect to the course's loss notation and regret.
+
+## Topics NOT yet demonstrated
+
+Regret, MDPs, policies, and planning appear in the written first lesson, but have not been substantively checked in chat. Probability/expected reward is only now being introduced. No confidence bounds, UCB/LCB proof, adversarial algorithms, or RL algorithms have been taught. Do not jump to them as if prerequisites are mastered.
+
+Avoid conflating sample average with true mean, variability with uncertainty, or realized regret relative to the best fixed action in hindsight with pseudo-regret relative to the best true mean. Fixed-rate epsilon-greedy is illustrative, not an optimal method or the exact method presented in the course's bandit slides.
+
+## Source coverage and practical caveats
+
+Introductory PDFs read closely: `Course Introduction - OReL2026.pdf`, `Online Machine Learning.pdf`, and introductory material in `Online Learning Setup and Stochastic Bandits.pdf`. Remaining PDFs are inventoried, not all read or verified.
+
+PDF text was extracted with `pypdf` in a local virtual environment; `.cache/` and `.venv/` are ignored and may need recreation. Check equations against the PDFs if extracted text is garbled.
+
+The course introduction (PDF p. 18) prohibits LLM use for submitted home assignments. We are providing self-study teaching and original training examples, not submission-ready course homework.
+
+The user enabled Google Docs, but has not requested moving lessons there. No Google Docs document has been created. Repository Markdown is the established documentation location.
+
+## Git continuity
+
+Use `git status`, fetch the session branch, and inspect local/remote history before committing. In this environment, later turns have sometimes shown the initial local commit despite retaining files from earlier pushed work. Do not force-push or discard content to repair that. Compare files/history and preserve both existing work and remote commits before integrating. A rejected push is not a successful push.
+
+Previous remote checkpoint before this handover: `e633d3b`, containing the epsilon-greedy discussion. This handover and Lesson 02 are intended to be committed and pushed together; use Git history to verify the resulting commit rather than relying on a stale hash in this document.
