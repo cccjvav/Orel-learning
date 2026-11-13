@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online and Reinforcement Learning - Course Material</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+        .meta-info {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        .attachment::before {
+            content: "📄 ";
+        }
+        .reading::before {
+            content: "📖 ";
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Online and Reinforcement Learning (OReL)</h1>
+    
+    <h2>General Course Information</h2>
+    <ul>
+        <li>Zoom Link for Lectures and Online TA Session (Passcode: OReL26)</li>
+        <li>Where and When</li>
+        <li>Course Material</li>
+        <li>Meet the TAs!</li>
+    </ul>
+
+    <h2>Lecture Notes & Books</h2>
+    <ul>
+        <li><a class="attachment" href="YS Machine Learning The Science of Selection ....pdf">[YS] Machine Learning -- The Science of Selection under Uncertainty</a></li>
+        <li><a class="attachment" href="Deep_Reinforcement_Learning.pdf">[CI] Concepts of Deep Reinforcement Learning -- A Short Course</a></li>
+        <li><a class="attachment" href="Notes on Theory of Discounted MDPs.pdf">[ST1] Notes on the Theory of Discounted MDPs</a></li>
+        <li><a class="attachment" href="Notes on Theory of Finite-Horizon MDPs.pdf">[ST2] Notes on the Theory of Finite-Horizon MDPs</a></li>
+        <li><a class="attachment" href="Notes on Theory of Average-Reward MDPs.pdf">[ST3] Notes on the Theory of Average-Reward MDPs</a></li>
+        <li><a class="attachment" href="Notes on Policy Evaluation.pdf">[ST4] Notes on Policy Evaluation</a></li>
+        <li><a class="attachment" href="Online Average-Reward RL.pdf">[ST5] Regret Minimization in Average-Reward MDPs</a></li>
+    </ul>
+
+    <h2>Week 1</h2>
+    <ul>
+        <li>
+            <h3>Tue, 3 Feb, 10:00-10:45 [Sadegh]: Course Introduction</h3>
+            <div class="meta-info"><a class="attachment" href="Course Introduction - OReL2026.pdf">Slides: Course Introduction - OReL2026.pdf</a></div>
+        </li>
+        <li>
+            <h3>Tue, 3 Feb, 11:00-12:00 [Yevgeny]: Overview of Online and Reinforcement Learning</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapter 7.1 in [YS]</span><br>
+            <a class="attachment" href="Online Machine Learning.pdf">Slides: Online Machine Learning.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 5 Feb, 9:15-12:00 [Yevgeny]: Online Learning Setup and Stochastic Bandits, Part 1</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapters 7.2-7.3 in [YS]</span><br>
+            <a class="attachment" href="Online Learning Setup and Stochastic Bandits.pdf">Slides: Online Learning Setup and Stochastic Bandits.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 5 Feb, 13:15-16:00 [Sadegh]: Theory of MDPs 1 - General Model</h3>
+            <div class="meta-info"><span class="reading">Reading: [ST1]</span><br>
+            <a class="attachment" href="MDP-general model.pdf">Slides: Theory of MDPs - General Model</a></div>
+        </li>
+    </ul>
+
+    <h2>Week 2</h2>
+    <ul>
+        <li>
+            <h3>Thu, 12 Feb, 9:15-12:00 [Yevgeny]: Stochastic Bandits (Part 2) and Adversarial Full Info (Part 1)</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapters 7.3-7.4 in [YS]</span><br>
+            <a class="attachment" href="Stochastic Bandits - the UCB algorithm.pdf">Slides: Stochastic Bandits - the UCB algorithm.pdf</a><br>
+            <a class="attachment" href="Prediction with Expert Advice.pdf">Slides: Prediction with Expert Advice.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 12 Feb, 13:15-16:00 [Sadegh]: Theory of MDPs 2 - Discounted MDPs</h3>
+            <div class="meta-info"><span class="reading">Reading: [ST1]</span><br>
+            <a class="attachment" href="MDP-Discounted-compressed.pdf">Slides: Theory of Discounted MDPs</a></div>
+        </li>
+    </ul>
+
+    <h2>Week 3</h2>
+    <ul>
+        <li>
+            <h3>Thu, 19 Feb, 9:15-12:00 [Sadegh]: Off-policy Evaluation and Optimization - Part 1</h3>
+            <div class="meta-info"><span class="reading">Reading: [ST4]; Chapters 5.5 and 6.7 in [B1], Optional: [P1]</span><br>
+            <a class="attachment" href="OPE.pdf">Slides: Policy and Off-Policy Evaluation (updated after class)</a></div>
+        </li>
+        <li>
+            <h3>Thu, 19 Feb, 13:15-16:00 [Yevgeny]: Adversarial Full Information (Part 2) + Adversarial Bandits</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapters 7.4-7.5 in [YS]</span><br>
+            <a class="attachment" href="Prediction with Expert Advice and Adversarial Bandits.pdf">Slides: Prediction with Expert Advice and Adversarial Bandits.pdf</a></div>
+        </li>
+    </ul>
+
+    <h2>Week 4</h2>
+    <ul>
+        <li>
+            <h3>Thu, 26 Feb, 9:15-12:00 [Yevgeny]: Contextual bandits, Evaluation of bandit algorithms, Advanced online learning settings</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapter 7.6 in [YS]</span><br>
+            <a class="attachment" href="Contextual Bandits.pdf">Slides: Contextual Bandits.pdf</a><br>
+            <a class="attachment" href="Online Learning Other Topics.pdf">Slides: Online Learning Other Topics.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 26 Feb, 13:15-16:00 [Christian]: Monte Carlo Methods and Direct Policy Search</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapters 2 and 3 in [CI]</span><br>
+            <span class="reading">Preparation: Sections 2.1 and 2.2 in [CI]</span><br>
+            <a class="attachment" href="RL-MonteCarlo.pdf">Slides: RL-MonteCarlo.pdf</a><br>
+            <a class="attachment" href="Notation Conversion.pdf">Additional Resources: Notation Conversion.pdf</a></div>
+        </li>
+    </ul>
+
+    <h2>Week 5</h2>
+    <ul>
+        <li>
+            <h3>Thu, 5 Mar, 9:15-12:00 [Christian]: Policy Gradient Methods</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapter 5 in [CI]</span><br>
+            <a class="attachment" href="RL-PolicyGradients.pdf">Slides: RL-PolicyGradients.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 5 Mar, 13:15-16:00 [Sadegh]: Off-Policy Optimization and Tabular Q-Learning</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapter 6.7 in [B1]</span><br>
+            <a class="attachment" href="OPO Methods and QL.pdf">Slides: OPO Methods and QL.pdf</a></div>
+        </li>
+    </ul>
+
+    <h2>Week 6</h2>
+    <ul>
+        <li>
+            <h3>Thu, 12 Mar, 9:15-12:00 [Christian]: Deep Q-learning</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapter 4 in [CI]</span><br>
+            <a class="attachment" href="RL-DQN.pdf">Slides: RL-DQN.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 12 Mar, 13:15-16:00 [Sadegh]: Theory of Average-Reward and Episodic MDPs</h3>
+            <div class="meta-info"><span class="reading">Reading: [ST2] and [ST3]</span><br>
+            <a class="attachment" href="MDP-AverageReward.pdf">Slides: Theory of Average-Reward MDPs</a><br>
+            <a class="attachment" href="MDP-FH.pdf">Slides: Theory of Finite-Horizon MDPs</a></div>
+        </li>
+    </ul>
+
+    <h2>Week 7</h2>
+    <ul>
+        <li>
+            <h3>Thu, 19 Mar, 9:15-12:00 [Christian]: Canceled</h3>
+        </li>
+        <li>
+            <h3>Thu, 19 Mar, 13:15-15:00 [Christian]: Actor-critic methods</h3>
+            <div class="meta-info"><span class="reading">Reading: Chapter 6 in [CI]</span><br>
+            <a class="attachment" href="RL-AC.pdf">Slides: RL-AC.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 19 Mar, 13:15-14:30 [Sadegh]: RL Settings and Performance Metrics</h3>
+            <div class="meta-info">
+            <a class="attachment" href="RL Setups.pdf">Slides: RL Settings</a></div>
+        </li>
+    </ul>
+
+    <h2>Week 8</h2>
+    <ul>
+        <li>
+            <h3>Tue, 24 Mar, 9:15-10:00 [Christian]: Actor-critic methods (cont'd)</h3>
+            <div class="meta-info">Location: Aud 01, HCØ<br>
+            <a class="attachment" href="RL-AC.pdf">Slides: RL-AC.pdf</a></div>
+        </li>
+        <li>
+            <h3>Tue, 24 Mar, 10:15-11 [Sadegh]: RL Settings (cont'd)</h3>
+            <div class="meta-info">Location: Aud 01, HCØ<br>
+            <a class="attachment" href="RL Setups.pdf">Slides: RL Setups.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 26 Mar, 9:30-11 [Sadegh]: Online RL: Regret Minimization in Average-Reward MDPs</h3>
+            <div class="meta-info"><span class="reading">Reading: [P2] and [ST5]</span><br>
+            <a class="attachment" href="Online Average-Reward RL.pdf">Slides: Online Average-Reward RL.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 26 Mar, 13:15-14:45 [Sadegh]: Online RL: Regret Minimization in Episodic MDPs - Part 2</h3>
+            <div class="meta-info">
+            <a class="attachment" href="Online Episodic RL.pdf">Slides: Online Episodic RL.pdf</a></div>
+        </li>
+        <li>
+            <h3>Thu, 26 Mar, 15:00-15:45 [All]: Course Evaluations and Concluding Remarks</h3>
+        </li>
+    </ul>
+
+    <h2>Projects (Unlinked Materials)</h2>
+    <p><i>The following files were mentioned in the syllabus but were not present in the provided local directory:</i></p>
+    <ul>
+        <li class="attachment">Green Computation Scheduling with Multi-Secretaries.pdf</li>
+        <li class="attachment">Causal MDPs.pdf</li>
+        <li class="attachment">Combining Adaptive Experiments.pdf</li>
+        <li class="attachment">Off-policy evaluation in confounded MDPs with proxies.pdf</li>
+    </ul>
+
+</body>
+</html>
