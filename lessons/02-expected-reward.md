@@ -123,3 +123,23 @@ Next teaching example (known means, not estimated means): suppose A's true expec
 Compared with always choosing A, this rule has an expected shortfall of 7 − 6.9 = 0.1 per visit. This does not mean every visit loses 0.1 points. It is an average over the randomness of choices and rewards. These means are supplied to us for evaluation; the actual bandit learner generally does not know them.
 
 This illustrates why trying an inferior option can have an immediate expected cost even when learning about it may help future decisions. It is not yet the formal definition of realized regret relative to the best fixed action in hindsight. Do not label the two benchmarks interchangeably.
+
+### Checkpoint answered: why explore?
+
+The learner correctly stated that we try B because we do not yet know enough about it, not because we know it is better. This supports their understanding of exploration as information gathering.
+
+### Bridge to the slides: rewards and losses
+
+The bandit slides often use losses rather than rewards. A reward measures desirability (larger is better); a loss measures cost or undesirability (smaller is better). Loss is not necessarily money. This bridge follows the reward/loss conversion shown in `Online Learning Setup and Stochastic Bandits.pdf`, PDF p. 17.
+
+For our original ratings between 0 and 10, first divide the rating by 10 to put the reward between 0 and 1. This rescaling is called normalization here. Then define loss = 1 − normalized reward.
+
+| Original rating | Normalized reward | Loss |
+| --- | --- | --- |
+| 10 | 1.0 | 0.0 |
+| 7 | 0.7 | 0.3 |
+| 2 | 0.2 | 0.8 |
+
+This conversion reverses the numerical direction without changing which outcome is preferable. Maximizing normalized reward is equivalent to minimizing this loss over the same number of rounds. The formula `loss = 1 − reward` here assumes the reward has already been put on the 0–1 scale; it must not be applied directly to a rating of 7 out of 10 if we want losses in [0,1].
+
+Next supported checkpoint: a rating of 8 becomes normalized reward 0.8. Ask for the corresponding loss and whether it is preferable to the loss from rating 7. No learner answer yet. Reference solution: 1 − 0.8 = 0.2, preferable to 0.3 because smaller loss is better.

@@ -92,3 +92,7 @@ After the bandit explanation, the user replied “ok.” We proceeded to introdu
 ### Latest learner answer and next teaching point
 
 The learner correctly answered **6** for the supported calculation `0.5 × 8 + 0.5 × 4`. That checkpoint is complete. We now illustrate averaging over choices: given true means A = 7 and B = 6, a direct 90% A / 10% B rule earns expected reward 6.9 per visit, an expected shortfall of 0.1 compared with always A. Explicitly distinguish this rule from the earlier epsilon-greedy example (95% A / 5% B). The next conceptual question asks why a learner might still sometimes try B when its mean is not known in advance. Do not assume the new calculation or the distinction between regret benchmarks has been mastered.
+
+### Latest checkpoint: exploration motivation confirmed; loss notation next
+
+The learner correctly answered that we explore B because we do not yet know enough about it. The next explanation bridges rewards to the course's losses: divide 0–10 coffee ratings by 10, then set loss = 1 − normalized reward. Examples: rating 7 gives reward 0.7 and loss 0.3; rating 2 gives loss 0.8. Pending question: rating 8 gives reward 0.8—what is the loss, and is it preferable to the loss from rating 7? Answer not yet received. Next, once this direction is comfortable, introduce a small loss-based regret example with a best-fixed-action benchmark. Do not restart previous completed checkpoints.
