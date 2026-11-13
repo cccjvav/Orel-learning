@@ -166,3 +166,7 @@ Order matters. min_a Σ_t ℓ_{t,a} first totals each fixed action and then sele
 The formula is a definition, not a claim that the bandit learner observes every term. Unchosen loss entries remain unavailable in standard bandit feedback.
 
 Guided notation checkpoint: on round 3 we choose café B. What are A_3 and ℓ_{3,A_3}? Reference answer: B and 0.2. No learner response yet. Keep this low-pressure; the goal is translating symbols, not memorizing a formula.
+
+## Notation checkpoint answered
+
+The learner correctly identified A_3 = B and ℓ_{3,A_3} = 0.2. This demonstrates reading the selected-action index in the formula. We continue to [Lesson 04: explore-then-commit](04-explore-then-commit.md) without claiming that the full formula has been memorized.
