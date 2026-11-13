@@ -47,3 +47,21 @@ Reference solution: 0.7 − 0.9 = **−0.2**. Realized regret against the best f
 ## Progress
 
 Introduced after the learner correctly converted reward 0.8 into loss 0.2 and explained why it is preferable to 0.3. Understanding of the regret calculation and benchmark is not yet checked.
+
+## Checkpoint answered: interpreting negative regret
+
+The learner correctly calculated 0.7 − 0.9 = **−0.2**. This demonstrates the subtraction; interpretation is explained next, not yet independently checked.
+
+Negative realized regret means our total loss was smaller than the best fixed action's total loss. Here we incurred **0.2 less loss** than either always-A or always-B. This is possible because our choices may switch between actions, whereas the comparator must stick to one action across all rounds.
+
+The benchmark uses hindsight to pick the best fixed action, not to choose each round's winner. “Best fixed” is therefore not “best possible sequence.” Our sequence A,B,B has loss 0.7; A,B,A would have loss 0.6. Thus negative regret does not prove our sequence was globally optimal, nor that our strategy will perform well on every future sequence.
+
+For this loss-based definition:
+
+- Positive regret: more loss than the best fixed action.
+- Zero regret: equal total loss to the best fixed action.
+- Negative regret: less loss than the best fixed action.
+
+Do not clip negative values to zero or reverse the subtraction. A negative realized regret is distinct from the stochastic pseudo-regret discussed later, whose standard definition is nonnegative.
+
+Next conceptual checkpoint: could we get negative regret in this same table if we committed to A for all three rounds? No: always-A totals 0.9 and the best fixed action totals 0.9, giving zero. More generally a fixed action cannot beat the best fixed action on the same realized table. No learner answer yet.

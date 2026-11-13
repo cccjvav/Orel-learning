@@ -102,3 +102,7 @@ The learner correctly answered that we explore B because we do not yet know enou
 The learner correctly answered the reward-to-loss checkpoint: 1 − 0.8 = 0.2, better than 0.3 because lower is preferable. Introduced Lesson 03 (`lessons/03-regret.md`) with a three-round realized-loss table. A losses = [0.2, 0.6, 0.1]; B losses = [0.4, 0.3, 0.2]. Both fixed choices total 0.9. Our choices A,A,B total 1.0, giving regret 0.1. Explain “fixed” and “in hindsight,” and that the full table is for evaluation, not bandit feedback available to the learner.
 
 Pending checkpoint: change our choices to A,B,B, total loss 0.7. Ask for 0.7 − 0.9. Correct result is −0.2; use it to explain that realized regret against a fixed comparator can be negative because a switching learner can beat both fixed choices. No answer received yet. Do not confuse this with nonnegative stochastic pseudo-regret.
+
+### Latest answer: negative regret calculated correctly
+
+The learner correctly answered **−0.2** for the regret checkpoint. The follow-up explains that our switching sequence A,B,B incurs 0.2 less loss than the best fixed café. This does not mean our sequence is the best possible: A,B,A totals 0.6 instead of 0.7. Explain the signs of regret and preserve the fixed comparator. Next pending question: would always choosing A produce negative regret in this same table? Expected answer: no, total 0.9 minus best-fixed total 0.9 is zero. Calculation of −0.2 is demonstrated; interpretation is introduced but not yet checked.
