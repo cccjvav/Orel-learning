@@ -8,7 +8,7 @@ These are permanent lesson notes, not just chat summaries. Read in order, or use
 | --- | --- | --- | --- |
 | [01](01-learning-by-making-decisions.md) | Learning by making decisions: online learning, feedback, exploration, and planning | *Online Machine Learning*, PDF pp. 2–20; short preview of *Online Learning Setup and Stochastic Bandits*, pp. 3–5 | Written; exploration and average-update reasoning demonstrated; other topics not yet checked |
 
-| [02](02-expected-reward.md) | Expected reward: probability-weighted averages | *Online Learning Setup and Stochastic Bandits*, PDF pp. 3–4, 8 (prerequisite explanation) | Introduced; checkpoint pending |
+| [02](02-expected-reward.md) | Expected reward: probability-weighted averages | *Online Learning Setup and Stochastic Bandits*, PDF pp. 3–4, 8 (prerequisite explanation) | Expectation-versus-outcome distinction demonstrated; bandit terminology clarified |
 
 ## Where we are
 

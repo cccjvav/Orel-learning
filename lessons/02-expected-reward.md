@@ -2,7 +2,7 @@
 
 [Lesson index](README.md) · [Previous lesson](01-learning-by-making-decisions.md)
 
-**Status:** first section introduced; understanding not yet checked.
+**Status:** learner correctly explained that an expectation need not be an individual outcome; bandit terminology clarified next.
 
 **Course connection:** `Online Learning Setup and Stochastic Bandits.pdf`, PDF pp. 3–4 and 8, uses underlying mean losses and expectations. This lesson supplies the probability prerequisite using rewards first. The café examples are original teaching examples, not copied exercises. Later we will translate to the course's loss notation and carefully distinguish regret from pseudo-regret.
 
@@ -65,8 +65,34 @@ Café C gives a rating of 9 with probability 50% and a rating of 5 with probabil
 
 **Worked solution:** (9 × 0.5) + (5 × 0.5) = 4.5 + 2.5 = 7. Because the outcomes are equally likely, an ordinary average of the two ratings happens to work here.
 
-**Conversation checkpoint:** Can B's expected reward be 7 even though no individual coffee receives a 7? Explain in words if possible. An answer has not yet been received.
+**Conversation checkpoint:** Can B's expected reward be 7 even though no individual coffee receives a 7? Explain in words if possible. The learner correctly explained that this is an average and need not equal an individual outcome.
 
 ## Next
 
 After checking this distinction, introduce a random reward symbol and the expectation symbol one at a time. Then connect expected rewards to comparing options and to regret, distinguishing the best true mean from the best observed fixed action in hindsight. Do not conflate those benchmarks.
+
+
+## Follow-up: what is a bandit problem?
+
+The learner asked for clarification of “bandit problem.” Do not assume a term is understood merely because earlier notes introduced it.
+
+A **multi-armed bandit problem** is a repeated decision problem: choose one of several options, observe the reward of that option, and use that information to improve later choices. The usual goal is to obtain a high total reward over the rounds, not merely to identify the best option without regard to the cost of learning.
+
+The name comes from slot machines, nicknamed “one-armed bandits”: the arm is the lever, and “bandit” refers to taking players' money. In the mathematical problem, an **arm** means an option, not a literal arm. Gambling is just the historical analogy; cafés, advertisements, and other applications can have the same structure.
+
+Café mapping:
+
+- Arms: cafés A and B.
+- One round: one visit/choice.
+- Reward: the chosen coffee's rating.
+- Bandit feedback: you observe the rating at the café you visited, not the coffee you would have received at the other café that day.
+- Unknown information: how good each option is on average.
+- Goal: obtain good total ratings while learning enough to choose well.
+
+For the basic **stochastic** bandit model, each option has an unknown, fixed reward distribution (a probability rule for its possible rewards), with independent draws across rounds in the standard model. Other bandit settings relax these assumptions; “bandit” alone does not guarantee stable reward probabilities.
+
+The café table with known probabilities was an explanatory model for expectation. A bandit learner normally does not receive that table; it sees outcomes such as 6, 10, 6 and estimates quality from them.
+
+The defining feedback limitation is not knowing what the unchosen option would have produced. Full-information feedback would reveal every option's outcome after each choice, although not necessarily before choosing.
+
+No additional checkpoint was required here: clarify the requested term before introducing more notation.

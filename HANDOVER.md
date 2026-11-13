@@ -60,7 +60,7 @@ The user said “Yes, you can continue now” and requested this handover. Lesso
 - B never produces a 7 in that model; an expected value need not be an attainable individual outcome.
 - Real bandit learners do not know the underlying probabilities; they estimate means from observations.
 
-The next checkpoint asks whether the expected reward can be 7 even though an individual coffee never receives 7. No answer is recorded yet. Continue from the user's next answer; do not assume they have mastered expectation. Then introduce mathematical symbols slowly and connect to the course's loss notation and regret.
+The learner correctly answered that expectation is an average and need not equal an individual outcome. They then asked what “bandit problem” means. We clarified the name, arms/options, repeated choices, chosen-action-only feedback, and total-reward objective using the café example (saved in Lesson 02). Next, ensure this terminology is comfortable before introducing symbols and loss notation. Their conceptual expectation answer is demonstrated; independent probability calculations have not been checked.
 
 ## Topics NOT yet demonstrated
 
