@@ -96,3 +96,20 @@ The café table with known probabilities was an explanatory model for expectatio
 The defining feedback limitation is not knowing what the unchosen option would have produced. Full-information feedback would reveal every option's outcome after each choice, although not necessarily before choosing.
 
 No additional checkpoint was required here: clarify the requested term before introducing more notation.
+
+## First notation: writing an expectation
+
+We now introduce two symbols, using reward notation for teaching (the course's bandit slides often use losses instead).
+
+- `R` names a random reward: the rating of one coffee before its outcome is known. It is a random variable, a numerical quantity whose value depends on a random outcome.
+- `E[R]`, written mathematically as **𝔼[R]**, means the expected value of R: its probability-weighted average. The brackets identify which quantity we are averaging; they are not multiplication.
+
+For the model with reward 10 with probability 0.25 and reward 6 with probability 0.75:
+
+**𝔼[R] = 0.25 × 10 + 0.75 × 6 = 7.**
+
+This says exactly what our earlier calculation said. Symbols provide a compact way to name the quantity and operation; they do not add a new assumption.
+
+One observed reward could be 10, while the model expectation remains 7. A new observation can change our estimate of an unknown mean, but does not by itself change the underlying probability model.
+
+Guided checkpoint: another café gives reward 8 with probability 0.5 and reward 4 with probability 0.5. Start with **𝔼[R] = 0.5 × 8 + 0.5 × 4**. Ask the learner to finish the arithmetic. No response has been recorded yet. The worked result is 4 + 2 = 6; retain this as a reference, not a claim of demonstrated calculation skill.

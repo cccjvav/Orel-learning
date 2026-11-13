@@ -83,3 +83,8 @@ The user enabled Google Docs, but has not requested moving lessons there. No Goo
 Use `git status`, fetch the session branch, and inspect local/remote history before committing. In this environment, later turns have sometimes shown the initial local commit despite retaining files from earlier pushed work. Do not force-push or discard content to repair that. Compare files/history and preserve both existing work and remote commits before integrating. A rejected push is not a successful push.
 
 Previous remote checkpoint before this handover: `e633d3b`, containing the epsilon-greedy discussion. This handover and Lesson 02 are intended to be committed and pushed together; use Git history to verify the resulting commit rather than relying on a stale hash in this document.
+
+
+### Latest continuation checkpoint
+
+After the bandit explanation, the user replied “ok.” We proceeded to introduce `R` as a random reward and `𝔼[R]` as its expected value, using the existing 10/6 probability example. Agreement is not evidence of mastery of bandits or notation. The next question asks the learner to calculate **0.5 × 8 + 0.5 × 4** for a new café; no answer has been received. Respond to that calculation next, then proceed gradually toward loss notation and regret. Do not restart the earlier expectation checkpoint.
