@@ -110,3 +110,7 @@ The learner correctly answered **−0.2** for the regret checkpoint. The follow-
 ### Latest continuation: average regret
 
 The learner correctly answered **zero** for always-A's 0.9 total minus the 0.9 benchmark. Next introduced total versus average regret, tied to the sublinear-regret goal on PDF p. 5 of the bandit setup slides. Illustrative totals: 10 over 100 rounds -> 0.10 per round; 20 over 1,000 -> 0.02. Increasing total regret can coexist with decreasing average gap. These are illustrations, not measured results or proof of an asymptotic guarantee. Pending supported calculation: total regret 30 over 1,000 rounds; what is 30 / 1,000? Correct result 0.03, not yet answered. Introduce formal sublinear notation only gradually, and avoid claiming realized regret must be nonnegative or monotone.
+
+### Latest continuation: concrete sublinear growth
+
+The learner correctly calculated **0.03** for 30 / 1,000. We now contrast illustrative total-regret growth √T versus 0.1T, using T = 100, 10,000, 1,000,000. Square-root totals 10, 100, 1,000 yield average gaps 0.1, 0.01, 0.001; linear totals keep average gap at 0.1. These are illustrative growth patterns, not measured café results or a proven bound for an algorithm. Explain the square root and T before relying on symbols. R_T in this section means regret; earlier R meant reward, so explicitly distinguish them. Pending conceptual question: which pattern makes average regret approach zero, and why? The arithmetic is demonstrated; the sublinear-growth interpretation is not yet independently checked.

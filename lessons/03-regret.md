@@ -83,3 +83,25 @@ A **sublinear regret** guarantee means regret grows slower than the number of ro
 Sublinear regret is about the average gap to a benchmark vanishing. It does not mean zero total loss, perfect choices on every round, or a guarantee that every later single choice is better.
 
 Guided checkpoint: if total regret is 30 after 1,000 rounds, average regret is 30 / 1,000 = 0.03. Ask the learner to compute this; answer not yet received.
+
+## Checkpoint answered: average regret 0.03
+
+The learner correctly calculated 30 / 1,000 = 0.03. This demonstrates the supported average-regret calculation.
+
+### Reading sublinear growth through a concrete example
+
+As an illustrative nonnegative regret curve, suppose total regret after T decisions is the square root of T. T is the number of decisions, not a reward. The square root of a number is the nonnegative number which, multiplied by itself, gives the original number.
+
+| T (decisions) | Illustrative total regret √T | Average regret √T / T |
+| --- | --- | --- |
+| 100 | 10 | 0.1 |
+| 10,000 | 100 | 0.01 |
+| 1,000,000 | 1,000 | 0.001 |
+
+Multiplying the number of decisions by 100 multiplies this total regret by only 10, so the average regret shrinks by a factor of 10. In contrast, total regret 0.1T gives constant average regret 0.1. Neither formula is claimed as an exact result for our café strategy. Actual theorems may upper-bound expected regret instead of describing every realized run.
+
+A first notation bridge: R_T denotes cumulative regret after T decisions. Then R_T / T denotes average regret. Earlier Lesson 02 used R for a random reward; here R_T names regret, a different quantity. Symbols are local conventions and must be read with their definitions. This R_T notation matches the bandit slides (PDF p. 5).
+
+The purpose of this growth comparison is to understand why a growing cumulative number need not indicate failure. We care about its growth relative to the horizon.
+
+Pending conceptual checkpoint: which example has a vanishing average gap, total regret 0.1T or total regret √T, and why? Expected answer: √T, because dividing by T makes the average shrink toward zero; 0.1T leaves the constant 0.1. No learner answer yet. Do not claim this property has been independently explained by the learner.
