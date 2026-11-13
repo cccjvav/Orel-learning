@@ -113,3 +113,13 @@ This says exactly what our earlier calculation said. Symbols provide a compact w
 One observed reward could be 10, while the model expectation remains 7. A new observation can change our estimate of an unknown mean, but does not by itself change the underlying probability model.
 
 Guided checkpoint: another café gives reward 8 with probability 0.5 and reward 4 with probability 0.5. Start with **𝔼[R] = 0.5 × 8 + 0.5 × 4**. Ask the learner to finish the arithmetic. No response has been recorded yet. The worked result is 4 + 2 = 6; retain this as a reference, not a claim of demonstrated calculation skill.
+
+### Checkpoint answered: expected reward of 6
+
+The learner correctly calculated 0.5 × 8 + 0.5 × 4 = 6. This demonstrates one supported expected-value calculation, not yet general mastery of probability.
+
+Next teaching example (known means, not estimated means): suppose A's true expected reward is 7 and B's is 6. Consider a fixed randomized choice rule selecting A with probability 0.9 and B with probability 0.1. Its expected reward per visit is 0.9 × 7 + 0.1 × 6 = 6.9. This is a direct 90/10 selection rule, NOT the earlier epsilon-greedy rule with 10% uniform exploration (which selected B 5% of the time).
+
+Compared with always choosing A, this rule has an expected shortfall of 7 − 6.9 = 0.1 per visit. This does not mean every visit loses 0.1 points. It is an average over the randomness of choices and rewards. These means are supplied to us for evaluation; the actual bandit learner generally does not know them.
+
+This illustrates why trying an inferior option can have an immediate expected cost even when learning about it may help future decisions. It is not yet the formal definition of realized regret relative to the best fixed action in hindsight. Do not label the two benchmarks interchangeably.

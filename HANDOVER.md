@@ -88,3 +88,7 @@ Previous remote checkpoint before this handover: `e633d3b`, containing the epsil
 ### Latest continuation checkpoint
 
 After the bandit explanation, the user replied “ok.” We proceeded to introduce `R` as a random reward and `𝔼[R]` as its expected value, using the existing 10/6 probability example. Agreement is not evidence of mastery of bandits or notation. The next question asks the learner to calculate **0.5 × 8 + 0.5 × 4** for a new café; no answer has been received. Respond to that calculation next, then proceed gradually toward loss notation and regret. Do not restart the earlier expectation checkpoint.
+
+### Latest learner answer and next teaching point
+
+The learner correctly answered **6** for the supported calculation `0.5 × 8 + 0.5 × 4`. That checkpoint is complete. We now illustrate averaging over choices: given true means A = 7 and B = 6, a direct 90% A / 10% B rule earns expected reward 6.9 per visit, an expected shortfall of 0.1 compared with always A. Explicitly distinguish this rule from the earlier epsilon-greedy example (95% A / 5% B). The next conceptual question asks why a learner might still sometimes try B when its mean is not known in advance. Do not assume the new calculation or the distinction between regret benchmarks has been mastered.
