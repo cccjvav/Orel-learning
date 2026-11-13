@@ -105,3 +105,23 @@ A first notation bridge: R_T denotes cumulative regret after T decisions. Then R
 The purpose of this growth comparison is to understand why a growing cumulative number need not indicate failure. We care about its growth relative to the horizon.
 
 Pending conceptual checkpoint: which example has a vanishing average gap, total regret 0.1T or total regret √T, and why? Expected answer: √T, because dividing by T makes the average shrink toward zero; 0.1T leaves the constant 0.1. No learner answer yet. Do not claim this property has been independently explained by the learner.
+
+## Clarification: the best fixed action's average loss
+
+The learner correctly selected pattern B as sublinear, but said “average regret grows slower.” Refine this: **total regret grows more slowly than T; average regret decreases toward zero** in the square-root example.
+
+The learner asked how the best fixed action's average loss is defined. For each available action, add its realized losses across the same T rounds and divide by T. Take the smallest such average. Equivalently, find the smallest cumulative loss first and divide by T; all actions have the same denominator.
+
+Original three-round table: A losses 0.2, 0.6, 0.1; B losses 0.4, 0.3, 0.2. Each fixed action has cumulative loss 0.9, so the best fixed action's average loss is 0.9 / 3 = 0.3. Our A,A,B choices have cumulative loss 1.0 and average loss 1/3. Thus average regret = 1/3 − 0.3 = 0.1/3, approximately 0.0333. This is the same as total regret divided by three.
+
+Crucial distinctions:
+
+- Average each action across **all T rounds**, not just rounds on which we selected it. Averaging only selected observations estimates its quality, but does not define this realized fixed-action benchmark.
+- Do not take the minimum loss separately each round: that allows switching and changes the comparator.
+- Do not substitute the smallest true expected loss: that is a different benchmark used in stochastic pseudo-regret, to be taught later.
+- The benchmark is chosen in hindsight. Under bandit feedback we generally lack the unchosen outcomes, so exact realized regret need not be observable to the learner. A complete loss table is an analytical description, not assumed learner feedback.
+- At each horizon T, recompute over the first T rounds. Which action is best may change with T. “Fixed” means the comparator uses one action throughout a given comparison, not that the same action must win at every horizon.
+
+The earlier √T and 0.1T examples specify only the regret gap, not a complete loss table. They do not determine the best fixed action's average loss numerically. One needs the losses or additional information to calculate that average.
+
+Compact definition for later reference: best-fixed average loss = min over actions a of [(loss of a on round 1 + ... + loss of a on round T) / T]. Average regret = our average loss − best-fixed average loss.
